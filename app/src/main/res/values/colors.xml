@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorPrimaryDarkV21">#ECF0F1</color>
+    <color name="colorAccent">#1EA13B</color>
+
+    <color name="btnNavigationSelected">#1EA13B</color>
+    <color name="btnNavigation">#95A5A6</color>
+
+    <color name="kelurahan">#00c853</color>
+    <color name="kecamatan">#ff5252</color>
+    <color name="posyandu">#448aff</color>
+    <color name="dinas">#ff6e40</color>
+    <color name="pemerintah">#7c8fd0</color>
+    <color name="polisi">#f9a825</color>
+
+    <color name="kelurahan_selected">#00a645</color>
+    <color name="kecamatan_selected">#c74040</color>
+    <color name="posyandu_selected">#2f5eae</color>
+    <color name="dinas_selected">#ca5733</color>
+    <color name="pemerintah_selected">#6372a6</color>
+    <color name="polisi_selected">#d69020</color>
+
+</resources>

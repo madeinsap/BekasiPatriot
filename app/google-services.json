@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "544964711308",
+    "firebase_url": "https://bekasipatriot-f08ee.firebaseio.com",
+    "project_id": "bekasipatriot-f08ee",
+    "storage_bucket": "bekasipatriot-f08ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544964711308:android:eeee842308e931ab",
+        "android_client_info": {
+          "package_name": "com.skripsi.gis.bekasipatriot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544964711308-kb7r79il8uc4gn6a1i31pkfffkr9hap9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skripsi.gis.bekasipatriot",
+            "certificate_hash": "56b6d1ec3fc579ecb0b462fa5c5dd1dcc2d03ea6"
+          }
+        },
+        {
+          "client_id": "544964711308-t1tbguet4drq09hqcajtaksetj6o2q0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnSCBUkzfPfSFlo6cKkB30bzFAlsXV_DQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544964711308-t1tbguet4drq09hqcajtaksetj6o2q0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
