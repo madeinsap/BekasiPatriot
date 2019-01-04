@@ -114,7 +114,8 @@ public class FragmentMaps extends Fragment{
                         jarak[i] = String.valueOf(round(initJarak[i],2));
                         markerD[i] = false;
 
-                        mClusterManager.addItem(new ModelMaps(latitude[i], longitude[i], instansi[i], alamat[i]));
+                        mClusterManager.addItem(new ModelMaps(latitude[i], longitude[i],
+                                instansi[i], alamat[i]));
                     } catch (JSONException je) {
 
                     }
@@ -207,10 +208,13 @@ public class FragmentMaps extends Fragment{
                 mClusterManager = new ClusterManager<>(getActivity(), googleMap);
                 RenderClusterInfoWindow renderer = new RenderClusterInfoWindow(getActivity(), googleMap, mClusterManager);
                 mClusterManager.setRenderer(renderer);
+                mClusterManager.getMarkerCollection()
+                        .setOnInfoWindowAdapter(new InfoWindowAdapter(LayoutInflater.from(getActivity())));
 
                 googleMap.setOnCameraIdleListener(mClusterManager);
                 googleMap.setOnMarkerClickListener(mClusterManager);
                 googleMap.setOnInfoWindowClickListener(mClusterManager);
+                googleMap.setInfoWindowAdapter(mClusterManager.getMarkerManager());
 
                 mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<ModelMaps>() {
                     @Override

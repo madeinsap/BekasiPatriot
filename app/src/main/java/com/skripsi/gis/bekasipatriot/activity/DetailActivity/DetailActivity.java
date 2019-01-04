@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -49,11 +52,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.security.AccessController.getContext;
+
 public class DetailActivity extends AppCompatActivity{
 
     TextView instansiAddress, instansiJam, instansiTlp, instansiWeb, instansiJarak;
     String kategori, namaInstansi, alamatInstansi, jamInstansi, tlpInstansi, webInstansi, gambarInstansi, jarakInstansi;
-    ConstraintLayout telp, web, navigation;
+    Button telp, web, navigation;
     double lng_des, lat_des, lng_cur, lat_cur;
 
     ProgressBar progress;
@@ -90,7 +95,7 @@ public class DetailActivity extends AppCompatActivity{
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
         collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#FFFFFF"));
 
-        telp = (ConstraintLayout) findViewById(R.id.btn_call);
+        telp = findViewById(R.id.btn_call);
         telp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +137,7 @@ public class DetailActivity extends AppCompatActivity{
             }
         });
 
-        web = (ConstraintLayout) findViewById(R.id.btn_web);
+        web = findViewById(R.id.btn_web);
         web.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +160,7 @@ public class DetailActivity extends AppCompatActivity{
             }
         });
 
-        navigation = (ConstraintLayout) findViewById(R.id.btn_direction);
+        navigation = findViewById(R.id.btn_direction);
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +193,8 @@ public class DetailActivity extends AppCompatActivity{
         recyclerViewlayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
         recyclerViewadapter = new AdapterDetail(GetDataAdapter1, this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(recyclerViewadapter);
         recyclerView.setNestedScrollingEnabled(false);
 
