@@ -28,8 +28,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_nav_news" />
-                            <entry key="sourceFile" value="C:\Users\madeinsap\Downloads\newspaper.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="height" value="128" />
+                            <entry key="outputName" value="ic_title_logo" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\madeinsap\Documents\title_logo.svg" />
+                            <entry key="width" value="256" />
                           </map>
                         </option>
                       </PersistentState>
