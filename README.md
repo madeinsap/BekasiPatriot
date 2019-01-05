@@ -1,6 +1,6 @@
 # BekasiPatriot
 
-Bekasi Patriot is an app that used to inform the services provided by the bekasi city government instance to bekasi city society. The information taken from www.bekasikota.go.id in 2017.
+Bekasi Patriot is an app that used to inform the services that provided by the bekasi city government instance to bekasi city society. The information taken from www.bekasikota.go.id in 2017.
 
 ## Libraries Used
 + [GoogleMapsAPI](https://developers.google.com/maps/documentation/android-sdk/intro)
