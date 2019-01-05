@@ -3,12 +3,12 @@
 Bekasi Patriot is an app that used to inform the services provided by the bekasi city government instance to bekasi city society. The information taken from www.bekasikota.go.id in year 2017.
 
 ## Libraries Used
-+ Google Maps API
-+ Google Direction API
-+ Google Distance Matrix API
-+ Twitter API
-+ Volley
-+ Glide
++ [GoogleMapsAPI](https://developers.google.com/maps/documentation/android-sdk/intro)
++ [GoogleDirectionAPI](https://developers.google.com/maps/documentation/android-sdk/intro)
++ [GoogleDistanceMatrixAPI](https://developers.google.com/maps/documentation/android-sdk/intro)
++ [TwitterAPI](https://developers.google.com/maps/documentation/android-sdk/intro)
++ [Volley](https://developers.google.com/maps/documentation/android-sdk/intro)
++ [Glide](https://developers.google.com/maps/documentation/android-sdk/intro)
 
 ## Screenshoot
 
