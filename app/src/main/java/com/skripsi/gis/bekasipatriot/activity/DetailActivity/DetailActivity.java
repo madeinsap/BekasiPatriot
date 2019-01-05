@@ -169,7 +169,7 @@ public class DetailActivity extends AppCompatActivity{
                 map.putExtra("lng_cur", lng_cur);
                 map.putExtra("lat_des", lat_des);
                 map.putExtra("lng_des", lng_des);
-                map.putExtra("nama", namaInstansi);
+                map.putExtra("instansi", namaInstansi);
                 map.putExtra("alamat", alamatInstansi);
                 startActivity(map);
             }

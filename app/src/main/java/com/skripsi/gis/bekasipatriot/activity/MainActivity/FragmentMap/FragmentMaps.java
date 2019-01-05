@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,6 +26,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -38,6 +42,7 @@ import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.skripsi.gis.bekasipatriot.R;
 import com.skripsi.gis.bekasipatriot.activity.DetailActivity.DetailActivity;
+import com.skripsi.gis.bekasipatriot.activity.ShowMaps.MapsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -115,39 +120,14 @@ public class FragmentMaps extends Fragment{
                         markerD[i] = false;
 
                         mClusterManager.addItem(new ModelMaps(latitude[i], longitude[i],
-                                instansi[i], alamat[i]));
+                                instansi[i], alamat[i], jam[i], telp[i], gambar[i],
+                                web[i], latitude[i], longitude[i], curentLat, curentLng, kategori[i],
+                                jarak[i]));
                     } catch (JSONException je) {
 
                     }
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(TARGET, 10f));
                 }
-
-                googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener(){
-                    @Override
-                    public void onInfoWindowClick(Marker marker) {
-                        for (int i = 0; i < numData; i++){
-                            if (marker.getTitle().equals(instansi[i])) {
-                                Intent intent = new Intent(getActivity(), DetailActivity.class);
-                                intent.putExtra("instansi", instansi[i]);
-                                intent.putExtra("alamat", alamat[i]);
-                                intent.putExtra("jam", jam[i]);
-                                intent.putExtra("tlp", telp[i]);
-                                intent.putExtra("gambar", gambar[i]);
-                                intent.putExtra("web", web[i]);
-                                intent.putExtra("lat_des", latitude[i]);
-                                intent.putExtra("lng_des", longitude[i]);
-                                intent.putExtra("lat_cur", curentLat);
-                                intent.putExtra("lng_cur", curentLng);
-                                intent.putExtra("kategori", kategori[i]);
-                                intent.putExtra("jarak", jarak[i]);
-                                startActivity(intent);
-                                markerD[i] = false;
-                            } else {
-                                markerD[i] = false;
-                            }
-                        }
-                    }
-                });
             }
 
         }, new Response.ErrorListener() {
@@ -190,8 +170,6 @@ public class FragmentMaps extends Fragment{
         if(bundle != null){
             curentLat = bundle.getDouble("lat", 0.00);
             curentLng = bundle.getDouble("lng", 0.00);
-            Log.d("output", "Latitude pada FragMaps = " + curentLat);
-            Log.d("output", "Longitude pada FragMaps = " + curentLng);
         }
         if(curentLat==null && curentLng==null){
             Toast.makeText(getActivity(), "Aktifkan GPS, kemudian refresh", Toast.LENGTH_LONG).show();
@@ -208,13 +186,9 @@ public class FragmentMaps extends Fragment{
                 mClusterManager = new ClusterManager<>(getActivity(), googleMap);
                 RenderClusterInfoWindow renderer = new RenderClusterInfoWindow(getActivity(), googleMap, mClusterManager);
                 mClusterManager.setRenderer(renderer);
-                mClusterManager.getMarkerCollection()
-                        .setOnInfoWindowAdapter(new InfoWindowAdapter(LayoutInflater.from(getActivity())));
 
                 googleMap.setOnCameraIdleListener(mClusterManager);
                 googleMap.setOnMarkerClickListener(mClusterManager);
-                googleMap.setOnInfoWindowClickListener(mClusterManager);
-                googleMap.setInfoWindowAdapter(mClusterManager.getMarkerManager());
 
                 mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<ModelMaps>() {
                     @Override
@@ -223,6 +197,69 @@ public class FragmentMaps extends Fragment{
                                 cluster.getPosition(), (float) Math.floor(googleMap
                                         .getCameraPosition().zoom + 1.25)), 300,
                                 null);
+                        return true;
+                    }
+                });
+
+                mClusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<ModelMaps>() {
+                    @Override
+                    public boolean onClusterItemClick(final ModelMaps modelMaps) {
+                        LayoutInflater factory = LayoutInflater.from(getActivity());
+                        final View alertView = factory.inflate(R.layout.custom_info_window, null);
+                        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                        alertDialog.setView(alertView);
+                        alertDialog.show();
+
+                        TextView namaInstansi = alertView.findViewById(R.id.txt_nama_instansi);
+                        TextView jarakInstansi = alertView.findViewById(R.id.txt_jarak_instansi);
+                        ImageView imageInstansi =  alertView.findViewById(R.id.img_instansi);
+                        Button btnDetail =  alertView.findViewById(R.id.btn_detail);
+                        Button btnNavigasi =  alertView.findViewById(R.id.btn_navigasi);
+
+                        namaInstansi.setText(modelMaps.getTitle());
+                        jarakInstansi.setText(modelMaps.getJarak() + " Km");
+
+                        String url = "http://"+modelMaps.getGambar();
+                        Glide.with(getContext())
+                                .load(url)
+                                .placeholder(R.drawable.loading)
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .into(imageInstansi);
+
+                        btnDetail.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                                intent.putExtra("instansi", modelMaps.getTitle());
+                                intent.putExtra("alamat", modelMaps.getSnippet());
+                                intent.putExtra("jam", modelMaps.getJam());
+                                intent.putExtra("tlp", modelMaps.getTelepon());
+                                intent.putExtra("gambar", modelMaps.getGambar());
+                                intent.putExtra("web", modelMaps.getWeb());
+                                intent.putExtra("lat_des", modelMaps.getLatDes());
+                                intent.putExtra("lng_des", modelMaps.getLngDes());
+                                intent.putExtra("lat_cur", modelMaps.getLatCur());
+                                intent.putExtra("lng_cur", modelMaps.getLngCur());
+                                intent.putExtra("kategori", modelMaps.getKategori());
+                                intent.putExtra("jarak", modelMaps.getJarak());
+                                startActivity(intent);
+                            }
+                        });
+
+                        btnNavigasi.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                                intent.putExtra("instansi", modelMaps.getTitle());
+                                intent.putExtra("alamat", modelMaps.getSnippet());
+                                intent.putExtra("lat_des", modelMaps.getLatDes());
+                                intent.putExtra("lng_des", modelMaps.getLngDes());
+                                intent.putExtra("lat_cur", modelMaps.getLatCur());
+                                intent.putExtra("lng_cur", modelMaps.getLngCur());
+                                startActivity(intent);
+                            }
+                        });
+
                         return true;
                     }
                 });

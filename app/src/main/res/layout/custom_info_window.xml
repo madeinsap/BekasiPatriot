@@ -3,34 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="4dp">
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txt_nama_instansi"
-            style="@android:style/TextAppearance.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/img_instansi"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="0.4"
             android:layout_margin="8dp"
-            android:fontFamily="@font/varela_round"
-            android:maxLines="1"
-            android:text="Nama Instansi" />
+            android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/txt_alamat_instansi"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.6"
             android:layout_margin="8dp"
-            android:fontFamily="@font/varela_round"
-            android:maxLines="1"
-            android:text="Alamat Instansi" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_nama_instansi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/varela_round"
+                android:maxLines="1"
+                android:text="Nama Instansi"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txt_jarak_instansi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/varela_round"
+                android:maxLines="1"
+                android:text="Jarak Instansi"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <Button
+                    android:id="@+id/btn_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:fontFamily="@font/varela_round"
+                    android:text="Detail"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_navigasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:fontFamily="@font/varela_round"
+                    android:text="Navigasi"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

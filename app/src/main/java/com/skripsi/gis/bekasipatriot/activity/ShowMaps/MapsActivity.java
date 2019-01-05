@@ -79,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         lng_des = i.getDoubleExtra("lng_des", 0);
         lat_cur = i.getDoubleExtra("lat_cur", 0);
         lng_cur = i.getDoubleExtra("lng_cur", 0);
-        nama = i.getStringExtra("nama");
+        nama = i.getStringExtra("instansi");
         alamat = i.getStringExtra("alamat");
     }
 
