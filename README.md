@@ -12,7 +12,7 @@ Bekasi Patriot is an app that used to inform the services that provided by the b
 
 ## Screenshoot
 
-  <img align="left" src="https://github.com/madeinsap/BekasiPatriot/blob/master/screenshoot/Home.png" width="250"/>
+  <img align="left" src="https://github.com/madeinsap/BekasiPatriot/blob/master/screenshoot/home.png" width="250"/>
       
   <img align="left" img src="https://github.com/madeinsap/BekasiPatriot/blob/master/screenshoot/Map.png" width="250"/> 
   
