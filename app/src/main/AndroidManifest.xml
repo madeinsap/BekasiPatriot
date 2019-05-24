@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity.MainSplash"
+            android:name=".activity.ActivitySplashScreen.MainSplash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -40,57 +40,28 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".activity.DetailActivity.DetailActivity"
+            android:name=".activity.ActivityDetail.DetailActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".activity.MainActivity.HomeActivity"
+            android:name=".activity.ActivityMain.HomeActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".activity.CardHomeActivity.KecamatanActivity"
+            android:name=".activity.ActivityListInstansi.InstansiActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".activity.CardHomeActivity.KelurahanActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".activity.CardHomeActivity.PuskesmasActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".activity.CardHomeActivity.DinasActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".activity.CardHomeActivity.PemerintahActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".activity.CardHomeActivity.PolisiActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".activity.ShowMaps.MapsActivity"
+            android:name=".activity.ActivityNavigation.MapsActivity"
             android:label="@string/title_activity_maps"
             android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".activity.AboutActivity.AboutActivity">
-
-        </activity>
-
-        <activity android:name=".activity.Tips_Activity.TipsActivity">
+        <activity android:name=".activity.ActivityTips.TipsActivity">
 
         </activity>
 

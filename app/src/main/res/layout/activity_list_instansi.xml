@@ -6,7 +6,7 @@
     android:id="@+id/activity_dinas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.skripsi.gis.bekasipatriot.activity.CardHomeActivity.DinasActivity">
+    tools:context="com.skripsi.gis.bekasipatriot.activity.ActivityListInstansi.InstansiActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_main"
